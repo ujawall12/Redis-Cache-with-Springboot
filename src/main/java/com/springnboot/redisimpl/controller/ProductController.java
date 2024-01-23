@@ -35,4 +35,10 @@ public class ProductController {
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         return ResponseEntity.ok().body(productService.createProduct(product));
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> deleteProduct(@RequestParam Long id) {
+        productService.deleteProductFromCache(id);
+        return ResponseEntity.ok().build();
+    }
 }
